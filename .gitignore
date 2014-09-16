@@ -26,3 +26,20 @@
 *.exe
 *.out
 *.app
+*.swp
+**/bin/Debug/
+**/bin/Release/
+**/obj/
+
+# IDE project
+*.depand
+*.layout
+*.cbp
+*.depand
+*.layout
+*.sln
+*.suo
+
+# tools output
+ValgrindOut.xml
+
