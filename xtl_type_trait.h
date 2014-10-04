@@ -89,5 +89,27 @@ namespace xtl {
 		typedef _true_type is_pod_type;
 	};
 
+
+	//Xianda's untilities
+	template <typename B1, typename B2>
+	struct _bool_type_and {
+		typedef _false_type type;
+	};
+
+	template <>
+	struct _bool_type_and <_true_type, _true_type> {
+		typedef _true_type  type;
+	};
+
+	template <typename B1, typename B2>
+	struct _bool_type_or {
+		typedef _true_type  type;
+	};
+
+	template <>
+	struct _bool_type_or <_false_type, _false_type>{
+		typedef _false_type type;
+	};
+
 }
 #endif //_XTL_TYPE_TRAIT_H

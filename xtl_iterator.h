@@ -1,5 +1,6 @@
-/*
+/**
  *	@Author: Ke, Xianda
+ *  @Date: 2014-08-18
  *
  *  Follow stl standard
  *

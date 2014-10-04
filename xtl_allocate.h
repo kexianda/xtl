@@ -1,12 +1,27 @@
-/*
+/**
  *	@Author: Ke, Xianda
  *	@Date: 2014-08-31
  *
  *	HP-Stlye allocators. a simple allocator
- *	no pool for small objects,  because  ms-crt / glibc will do the work. 
+ *	no pool for small objects,  because  ms-crt / glibc will do the work.
  *
  *
  * */
+
+/**
+ *   Copyright (c) 1994
+ *   Hewlett-Packard Company
+ *
+ *   Permission to use, copy, modify, distribute and sell this software
+ *   and its documentation for any purpose is hereby granted without fee,
+ *   provided that the above copyright notice appear in all copies and
+ *   that both that copyright notice and this permission notice appear
+ *   in supporting documentation.  Hewlett-Packard Company makes no
+ *   representations about the suitability of this software for any
+ *   purpose.  It is provided "as is" without express or implied warranty.
+ *
+ **/
+
 #ifndef _XTL_ALLOCATOR_H
 #define _XTL_ALLOCATOR_H	1
 
@@ -14,7 +29,7 @@
 #include <cstddef> //ptrdiff_t, size_t
 
 namespace xtl {
-	
+
 	//exception
 	//stuct bad_alloc {};
 
@@ -22,7 +37,7 @@ namespace xtl {
 	inline T* _allocate (ptrdiff_t size, T* ) {
 		T* tmp = (T*) malloc ( (size_t)(size * sizeof(T)) );
 		if (nullptr == tmp) {
-			std::bad_alloc ba; //use std::bad_alloc 
+			std::bad_alloc ba; //use std::bad_alloc
 			throw ba;
 		}
 		return tmp;

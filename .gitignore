@@ -32,10 +32,9 @@
 **/obj/
 
 # IDE project
-*.depand
+*.depend
 *.layout
 *.cbp
-*.depand
 *.layout
 *.sln
 *.suo

@@ -1,3 +1,28 @@
+/**
+ *  Copyleft (c) 2014
+ *	@Author: Ke, Xianda
+ *	@Date: 2014-08-31
+ *
+ *	implement a stl::vector like container: xtl:vetcor
+ *
+ *
+ *
+ * */
+
+/**
+ *   Copyright (c) 1994
+ *   Hewlett-Packard Company
+ *
+ *   Permission to use, copy, modify, distribute and sell this software
+ *   and its documentation for any purpose is hereby granted without fee,
+ *   provided that the above copyright notice appear in all copies and
+ *   that both that copyright notice and this permission notice appear
+ *   in supporting documentation.  Hewlett-Packard Company makes no
+ *   representations about the suitability of this software for any
+ *   purpose.  It is provided "as is" without express or implied warranty.
+ *
+ **/
+
 
 #ifndef _XTL_VECTOR_H
 #define _XTL_VECTOR_H 1
@@ -30,15 +55,16 @@ namespace xtl {
 		//reverse_iterator
 		//const_reverse_iterator
 
-		vector() : m_start(nullptr), m_finish(nullptr), m_end_of_storage(nullptr) {}
+		vector() : m_start(nullptr), m_finish(nullptr), m_end_of_storage(nullptr), m_size(0) {}
 
 
 		explicit vector(size_type n, const value_type& val = value_type()) {
 			this->m_start = allocator_type::allocate (n);
 			this->m_finish = this->m_start + n;
 			this->m_end_of_storage = this->m_start + n;
+			this->m_size = n;
 
-			//todo, to be improved
+			//todo, to be improved for POD type
 			for (size_type i=0; i < n; ++i) {
 				xtl::copy_construct(m_start+i, val);
 			}
@@ -53,6 +79,7 @@ namespace xtl {
 			this->m_start = allocator_type::allocate (n);
 			this->m_finish = this->m_start + n;
 			this->m_end_of_storage = this->m_start + n;
+			this->m_size = n;
 
 			iterator curr = m_start;
 			while (from_itr != to_itr) {
@@ -61,7 +88,11 @@ namespace xtl {
 		}
 
 		vector (const vector& v) {
-			//todo
+            size_type n = v.size ();
+            this->m_start = allocator_type::allocate (n);
+			this->m_finish = xtl::unititialized_copy (v.begin(), v.end(), m_start);
+			this->m_end_of_storage = this->m_finish;
+			this->m_size = n;
 		}
 
 
@@ -78,18 +109,23 @@ namespace xtl {
 
 
 
-		iterator begin () {
+		iterator begin () const {
 			return this->m_start;
 		}
-		iterator end () {
+		iterator end () const {
 		    //const_iterator
 			return this->m_finish;
+		}
+
+		size_type size () const {
+		    return m_size;
 		}
 
 	protected:
 		iterator m_start;
 		iterator m_finish;
 		iterator m_end_of_storage;
+		size_type m_size;
 	};
 }
 

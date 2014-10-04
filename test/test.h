@@ -69,10 +69,34 @@ namespace xtl_vector_test {
 		FooVector third (second.begin(), second.end());
 
 		//copy constructor
-		//FooVector fourth (third);
+		FooVector fourth (third);
+		for (FooVector::iterator itr = fourth.begin(); itr < fourth.end(); ++itr ) {
+            //test iterator, operator*,  operator->
+			int tmp1 = (*itr).val;
+			int tmp2 = itr->val;
+			cout<< tmp1 + tmp2<<endl;
+		}
 
-        std::vector<Foo> stdFooVector (5, Foo(8)); // 8,8,8,8,8
-        stdFooVector.push_back(Foo(9));
+		xtl::vector<int> invVect (5, 1) ; //1,1,1,1,1
+		xtl::vector<int> invVect2(invVect); //
+
+
+//		typedef	typename xtl::iterator_traits<int*>::value_type value_type1;
+//        typedef	typename xtl::iterator_traits<int*>::value_type value_type2;
+//        value_type1 i = 1;
+//        value_type2 j = 2;
+//
+//
+//        typedef typename xtl::_type_trait<value_type1>::is_pod_type type1;
+//        typedef typename xtl::_type_trait<value_type2>::is_pod_type type2;
+//        typedef	typename xtl::_bool_type_and<type1, type2>::type dispatch_type;
+//        dispatch_type x ;
+
+        //std::vector<Foo> stdFooVector (5, Foo(8)); // 8,8,8,8,8
+        //std::vector<Foo> stdFooVector2 (stdFooVector);
+        //std::vector<int> stdIntVector (5, 1);
+        //std::vector<int> stdIntVector2(stdIntVector);
+        //stdFooVector2.push_back(Foo(9));
 
 
 		// the iterator constructor can also be used to construct from arrays:
