@@ -19,6 +19,30 @@
 
 namespace xtl {
 
+    //string.h
+    void* memmove (void* dest, const void* src, size_t n) {
+        //ISO C++ forbids incrementing a pointer of type 'void*'
+        char * d = (char*) dest;
+        const char * s = (const char*) src;
+        if (d < s) {
+            while(n--) {
+                *d++ = *s++;
+            }
+        }
+        else if (d > s) {
+            while(n--) {
+                *(d+n) = *(s+n);
+            }
+        }
+        return dest;
+    }
+
+}
+
+
+namespace xtl {
+
+
 
     template <typename InputItr, typename FwdItr>
     FwdItr _unititialized_copy_aux (InputItr first, InputItr last, FwdItr output, xtl::_true_type isPod) {
@@ -27,7 +51,7 @@ namespace xtl {
         typedef typename xtl::iterator_traits<InputItr>::value_type value_type;
 
         //todo: implement xtl::memmove()
-        std::memmove (xtl::addressof(*output), xtl::addressof(*first), diff * sizeof(value_type) );
+        xtl::memmove (xtl::addressof(*output), xtl::addressof(*first), diff * sizeof(value_type) );
         return (output + diff);
     }
 
@@ -53,6 +77,7 @@ namespace xtl {
 
         return	_unititialized_copy_aux (first, last, output, dispatch_type());
     }
+
 
 }//end of namespace
 
