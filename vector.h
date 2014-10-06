@@ -64,10 +64,12 @@ namespace xtl {
 			this->m_end_of_storage = this->m_start + n;
 			this->m_size = n;
 
+			xtl::uninitialized_fill_n(this->m_start, n, val);
+
 			//todo, to be improved for POD type
-			for (size_type i=0; i < n; ++i) {
-				xtl::copy_construct(m_start+i, val);
-			}
+			//for (size_type i=0; i < n; ++i) {
+			//	xtl::copy_construct(m_start+i, val);
+			//}
 		}
 
 

@@ -77,8 +77,15 @@ namespace xtl_vector_test {
 			cout<< tmp1 + tmp2<<endl;
 		}
 
-		xtl::vector<int> invVect (5, 1) ; //1,1,1,1,1
-		xtl::vector<int> invVect2(invVect); //
+
+		xtl::vector<double> v1 (5, 1.1) ; //1,1,1,1,1
+		xtl::vector<double> v2 (v1); //
+		for (auto itr=v2.begin(); itr < v2.end(); ++itr) {
+            cout<<*itr<<"\t"<<endl;
+		}
+
+		std::vector<double> stddoubleVect (5, 1.0); //1.0, 1.0, 1.0, 1.0, 1.0
+		//std::vector<double> stddoubleVect2 (stddoubleVect.begin(), stddoubleVect.end());
 
 
 //		typedef	typename xtl::iterator_traits<int*>::value_type value_type1;
