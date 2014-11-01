@@ -31,6 +31,8 @@
 #include "xtl_allocate.h"
 #include "xtl_iterator.h"
 
+ namespace xtl {
+
 namespace xtl {
 
 	template <typename T, typename Alloc = xtl::allocator<T> >
@@ -43,7 +45,7 @@ namespace xtl {
 		typedef T*			pointer;
 		typedef const T*	const_pointer;
 
-		typedef T*          iterator;
+		typedef T*			iterator;
 
 		typedef size_t		size_type;
 
@@ -65,11 +67,6 @@ namespace xtl {
 			this->m_size = n;
 
 			xtl::uninitialized_fill_n(this->m_start, n, val);
-
-			//todo, to be improved for POD type
-			//for (size_type i=0; i < n; ++i) {
-			//	xtl::copy_construct(m_start+i, val);
-			//}
 		}
 
 
@@ -90,8 +87,8 @@ namespace xtl {
 		}
 
 		vector (const vector& v) {
-            size_type n = v.size ();
-            this->m_start = allocator_type::allocate (n);
+			size_type n = v.size ();
+			this->m_start = allocator_type::allocate (n);
 			this->m_finish = xtl::unititialized_copy (v.begin(), v.end(), m_start);
 			this->m_end_of_storage = this->m_finish;
 			this->m_size = n;
@@ -115,12 +112,12 @@ namespace xtl {
 			return this->m_start;
 		}
 		iterator end () const {
-		    //const_iterator
+			//const_iterator
 			return this->m_finish;
 		}
 
 		size_type size () const {
-		    return m_size;
+			return m_size;
 		}
 
 	protected:

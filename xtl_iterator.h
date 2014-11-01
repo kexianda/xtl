@@ -36,7 +36,7 @@ namespace xtl {
 	struct random_access_iterator_tag : public bidirectional_iterator_tag {};
 
 
-    template <typename T, typename Category, typename Distance = ptrdiff_t>
+	template <typename T, typename Category, typename Distance = ptrdiff_t>
 	struct iterator {
 		typedef Category	iterator_category;
 		typedef T			value_type;
@@ -137,10 +137,10 @@ namespace xtl {
 		typedef Iterator	iterator_type;
 
 		typedef typename iterator_traits<Iterator>::iterator_category	iterator_category;
-        typedef typename iterator_traits<Iterator>::value_type 			value_type;
-        typedef	typename iterator_traits<Iterator>::pointer				pointer;
-        typedef	typename iterator_traits<Iterator>::reference			reference;
-	  	typedef typename iterator_traits<Iterator>::difference_type		difference_type;
+		typedef typename iterator_traits<Iterator>::value_type 			value_type;
+		typedef	typename iterator_traits<Iterator>::pointer				pointer;
+		typedef	typename iterator_traits<Iterator>::reference			reference;
+		typedef typename iterator_traits<Iterator>::difference_type		difference_type;
 
 		reverse_iterator () : current() {}
 
@@ -192,7 +192,7 @@ namespace xtl {
 		reverse_iterator & operator+=(difference_type n) {
 			current -= n;
 			return *this;
-        }
+		}
 
 		reverse_iterator operator-(difference_type n) {
 			return reverse_iterator (current + n);
@@ -201,7 +201,7 @@ namespace xtl {
 		reverse_iterator & operator-=(difference_type n) {
 			current += n;
 			return *this;
-        }
+		}
 
 		reference operator[](difference_type n) {
 			operator* (current - n);
