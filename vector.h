@@ -31,8 +31,6 @@
 #include "xtl_allocate.h"
 #include "xtl_iterator.h"
 
- namespace xtl {
-
 namespace xtl {
 
 	template <typename T, typename Alloc = xtl::allocator<T> >
