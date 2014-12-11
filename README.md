@@ -1,10 +1,11 @@
 xtl
 ===
 Xianda's template libaray, a STL like library.
+Just for fun
 
-<ol>Todo:
+<ol>
 <li>(done) type_trait</li>
-<li>(done) allocator</li>
+<li>(done) allocator </li>
 <li>(done) memory: contructor / destory, POD optimization</li>
 <li>(partially) iterator</li>
 <li>(partially) vector</li>
