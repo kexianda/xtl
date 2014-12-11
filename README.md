@@ -7,6 +7,7 @@ Just for fun
 <li>(done) type_trait</li>
 <li>(done) allocator </li>
 <li>(done) memory: contructor / destory, POD optimization</li>
+<li>(partially) Utilities </li>
 <li>(partially) iterator</li>
 <li>(partially) vector</li>
 <li>(todo) list, tuple, map</li>
