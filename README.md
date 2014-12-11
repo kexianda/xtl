@@ -12,6 +12,7 @@ Just for fun
 <li>(partially) vector</li>
 <li>(todo) list, tuple, map</li>
 <li>(partially) support C++ 11/14 features</li>
+<li>(todo) reindent, doxygen style comments</li>
 <li>...</li>
 </ol>
 
